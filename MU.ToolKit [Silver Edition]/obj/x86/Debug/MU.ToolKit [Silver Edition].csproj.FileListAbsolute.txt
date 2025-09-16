@@ -1,0 +1,22 @@
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\bin\Debug\MU.ToolKit [Silver Edition].exe
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\bin\Debug\MU.ToolKit [Silver Edition].pdb
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU.ToolKit [Silver Edition].csproj.AssemblyReference.cache
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.CashShopEditor.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.EventBagEditor.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.EventBagEditor_XML.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form1.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.FormCRC.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form_About.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form_BmdItemAddercs.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form_CashShop_AddItems.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form_DropManager.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Form_Search.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.MSBEditor.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.MyDialog.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.RegisterationForm.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.ShopEditor.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU_ToolKit.Properties.Resources.resources
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU.ToolKit [Silver Edition].csproj.GenerateResource.cache
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU.ToolKit [Silver Edition].csproj.CoreCompileInputs.cache
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU.ToolKit [Silver Edition].exe
+G:\Arquivos\Projeto\ToolKit Silver by Pyke\ToolKit Silver by Pyke\Source\MU.ToolKit [Silver Edition]\obj\x86\Debug\MU.ToolKit [Silver Edition].pdb
