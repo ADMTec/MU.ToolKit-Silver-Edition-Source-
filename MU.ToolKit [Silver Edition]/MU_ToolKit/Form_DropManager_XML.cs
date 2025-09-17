@@ -13,7 +13,6 @@ namespace MU_ToolKit
         private bool suppressItemFieldEvents;
         private bool suppressMonsterSelectionChange;
         private bool suppressItemSelectionChange;
-
         private Structures.IGCDropManagerXmlFile currentFile = new Structures.IGCDropManagerXmlFile();
         private string currentFilePath;
 
@@ -24,7 +23,6 @@ namespace MU_ToolKit
             itemBindingSource.CurrentChanged += ItemBindingSource_CurrentChanged;
             listBoxMonsters.DataSource = monsterBindingSource;
             listBoxItems.DataSource = itemBindingSource;
-
         }
 
         private void Form_DropManager_XML_Load(object sender, EventArgs e)
@@ -71,7 +69,6 @@ namespace MU_ToolKit
             {
                 itemBindingSource.DataSource = null;
             }
-
             groupBoxItemList.Enabled = monster != null;
             RefreshItemDetails();
         }

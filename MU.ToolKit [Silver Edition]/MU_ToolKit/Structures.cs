@@ -2003,6 +2003,372 @@ namespace MU_ToolKit
 		}
 
 		// Token: 0x0200001C RID: 28
+                public class IGCEventBagXmlItem
+                {
+                        public IGCEventBagXmlItem()
+                        {
+                                this.Cat = "0";
+                                this.Index = "0";
+                                this.ItemMinLevel = "0";
+                                this.ItemMaxLevel = "0";
+                                this.Durability = "-1";
+                                this.Skill = "0";
+                                this.Luck = "0";
+                                this.Option = "0";
+                                this.Exc = "0";
+                                this.SetItem = "0";
+                                this.SocketCount = "0";
+                                this.ElementalItem = "0";
+                                this.MuunEvolutionItemCat = "0";
+                                this.MuunEvolutionItemIndex = "0";
+                                this.KindA = "0";
+                                this.DropRate = "0";
+                                this.Duration = "0";
+                        }
+
+                        public string Cat { get; set; }
+
+                        public string Index { get; set; }
+
+                        public string ItemMinLevel { get; set; }
+
+                        public string ItemMaxLevel { get; set; }
+
+                        public string Durability { get; set; }
+
+                        public string Skill { get; set; }
+
+                        public string Luck { get; set; }
+
+                        public string Option { get; set; }
+
+                        public string Exc { get; set; }
+
+                        public string SetItem { get; set; }
+
+                        public string SocketCount { get; set; }
+
+                        public string ElementalItem { get; set; }
+
+                        public string MuunEvolutionItemCat { get; set; }
+
+                        public string MuunEvolutionItemIndex { get; set; }
+
+                        public string KindA { get; set; }
+
+                        public string DropRate { get; set; }
+
+                        public string Duration { get; set; }
+
+                        public override string ToString()
+                        {
+                                return string.Format("Cat={0} Index={1}", this.Cat, this.Index);
+                        }
+                }
+
+                public class IGCEventBagXmlDrop
+                {
+                        public IGCEventBagXmlDrop()
+                        {
+                                this.Rate = "10000";
+                                this.Count = "1";
+                                this.Items = new BindingList<Structures.IGCEventBagXmlItem>();
+                        }
+
+                        public string Rate { get; set; }
+
+                        public string Count { get; set; }
+
+                        public BindingList<Structures.IGCEventBagXmlItem> Items { get; private set; }
+
+                        public override string ToString()
+                        {
+                                return string.Format("Rate={0} Count={1} Items={2}", this.Rate, this.Count, this.Items.Count);
+                        }
+                }
+
+                public class IGCEventBagXmlDropAllow
+                {
+                        public IGCEventBagXmlDropAllow()
+                        {
+                                this.Wizard = "0";
+                                this.Knight = "0";
+                                this.FairyElf = "0";
+                                this.MagicGladiator = "0";
+                                this.DarkLord = "0";
+                                this.Summoner = "0";
+                                this.RageFighter = "0";
+                                this.PlayerMinLevel = "1";
+                                this.PlayerMaxLevel = "MAX";
+                                this.MapNumber = "-1";
+                                this.Drops = new BindingList<Structures.IGCEventBagXmlDrop>();
+                        }
+
+                        public string Wizard { get; set; }
+
+                        public string Knight { get; set; }
+
+                        public string FairyElf { get; set; }
+
+                        public string MagicGladiator { get; set; }
+
+                        public string DarkLord { get; set; }
+
+                        public string Summoner { get; set; }
+
+                        public string RageFighter { get; set; }
+
+                        public string PlayerMinLevel { get; set; }
+
+                        public string PlayerMaxLevel { get; set; }
+
+                        public string MapNumber { get; set; }
+
+                        public BindingList<Structures.IGCEventBagXmlDrop> Drops { get; private set; }
+
+                        public override string ToString()
+                        {
+                                return string.Format("Map={0} Drops={1}", this.MapNumber, this.Drops.Count);
+                        }
+                }
+
+                public class IGCEventBagXmlFile
+                {
+                        public IGCEventBagXmlFile()
+                        {
+                                this.BagName = "ItemBag";
+                                this.ItemRate = "10000";
+                                this.SetItemRate = "0";
+                                this.MoneyDrop = "0";
+                                this.BagUseEffect = "0";
+                                this.BagUseRate = "10000";
+                                this.SummonEnable = "0";
+                                this.SummonDropRate = "0";
+                                this.SummonItemCat = "0";
+                                this.SummonItemIndex = "0";
+                                this.AddCoinEnable = "0";
+                                this.AddCoinType = "0";
+                                this.AddCoinValue = "0";
+                                this.AddCoinElementName = "AddCoin";
+                                this.DropAllows = new BindingList<Structures.IGCEventBagXmlDropAllow>();
+                        }
+
+                        public string BagName { get; set; }
+
+                        public string ItemRate { get; set; }
+
+                        public string SetItemRate { get; set; }
+
+                        public string MoneyDrop { get; set; }
+
+                        public string BagUseEffect { get; set; }
+
+                        public string BagUseRate { get; set; }
+
+                        public string SummonEnable { get; set; }
+
+                        public string SummonDropRate { get; set; }
+
+                        public string SummonItemCat { get; set; }
+
+                        public string SummonItemIndex { get; set; }
+
+                        public string AddCoinEnable { get; set; }
+
+                        public string AddCoinType { get; set; }
+
+                        public string AddCoinValue { get; set; }
+
+                        public string AddCoinElementName { get; set; }
+
+                        public BindingList<Structures.IGCEventBagXmlDropAllow> DropAllows { get; private set; }
+                }
+
+                public static Structures.IGCEventBagXmlFile LoadIGCEventBagXml(string fileName)
+                {
+                        if (string.IsNullOrWhiteSpace(fileName))
+                        {
+                                throw new ArgumentException("Arquivo inválido", "fileName");
+                        }
+
+                        XDocument xdocument = XDocument.Load(fileName);
+                        XElement root = xdocument.Root;
+                        if (root == null || root.Name.LocalName != "ItemBag")
+                        {
+                                throw new InvalidDataException("O nó ItemBag não foi encontrado.");
+                        }
+
+                        Structures.IGCEventBagXmlFile igceventBagXmlFile = new Structures.IGCEventBagXmlFile();
+                        XElement element = root.Element("BagConfig");
+                        if (element != null)
+                        {
+                                igceventBagXmlFile.BagName = Structures.GetAttributeValue(element, "Name", igceventBagXmlFile.BagName);
+                                igceventBagXmlFile.ItemRate = Structures.GetAttributeValue(element, "ItemRate", igceventBagXmlFile.ItemRate);
+                                igceventBagXmlFile.SetItemRate = Structures.GetAttributeValue(element, "SetItemRate", igceventBagXmlFile.SetItemRate);
+                                igceventBagXmlFile.MoneyDrop = Structures.GetAttributeValue(element, "MoneyDrop", igceventBagXmlFile.MoneyDrop);
+                                igceventBagXmlFile.BagUseEffect = Structures.GetAttributeValue(element, "BagUseEffect", igceventBagXmlFile.BagUseEffect);
+                                igceventBagXmlFile.BagUseRate = Structures.GetAttributeValue(element, "BagUseRate", igceventBagXmlFile.BagUseRate);
+                        }
+
+                        XElement element2 = root.Element("SummonBook");
+                        if (element2 != null)
+                        {
+                                igceventBagXmlFile.SummonEnable = Structures.GetAttributeValue(element2, "Enable", igceventBagXmlFile.SummonEnable);
+                                igceventBagXmlFile.SummonDropRate = Structures.GetAttributeValue(element2, "DropRate", igceventBagXmlFile.SummonDropRate);
+                                igceventBagXmlFile.SummonItemCat = Structures.GetAttributeValue(element2, "ItemCat", igceventBagXmlFile.SummonItemCat);
+                                igceventBagXmlFile.SummonItemIndex = Structures.GetAttributeValue(element2, "ItemIndex", igceventBagXmlFile.SummonItemIndex);
+                        }
+
+                        XElement element3 = root.Element("AddCoin") ?? root.Element("AddCount");
+                        if (element3 != null)
+                        {
+                                igceventBagXmlFile.AddCoinElementName = element3.Name.LocalName;
+                                igceventBagXmlFile.AddCoinEnable = Structures.GetAttributeValue(element3, "Enable", igceventBagXmlFile.AddCoinEnable);
+                                igceventBagXmlFile.AddCoinType = Structures.GetAttributeValue(element3, "CoinType", igceventBagXmlFile.AddCoinType);
+                                igceventBagXmlFile.AddCoinValue = Structures.GetAttributeValue(element3, "CoinValue", igceventBagXmlFile.AddCoinValue);
+                        }
+
+                        foreach (XElement xelement in root.Elements("DropAllow"))
+                        {
+                                Structures.IGCEventBagXmlDropAllow igceventBagXmlDropAllow = new Structures.IGCEventBagXmlDropAllow();
+                                igceventBagXmlDropAllow.Wizard = Structures.GetAttributeValue(xelement, "Wizard", igceventBagXmlDropAllow.Wizard);
+                                igceventBagXmlDropAllow.Knight = Structures.GetAttributeValue(xelement, "Knight", igceventBagXmlDropAllow.Knight);
+                                igceventBagXmlDropAllow.FairyElf = Structures.GetAttributeValue(xelement, "FairyElf", igceventBagXmlDropAllow.FairyElf);
+                                igceventBagXmlDropAllow.MagicGladiator = Structures.GetAttributeValue(xelement, "MagicGladiator", igceventBagXmlDropAllow.MagicGladiator);
+                                igceventBagXmlDropAllow.DarkLord = Structures.GetAttributeValue(xelement, "DarkLord", igceventBagXmlDropAllow.DarkLord);
+                                igceventBagXmlDropAllow.Summoner = Structures.GetAttributeValue(xelement, "Summoner", igceventBagXmlDropAllow.Summoner);
+                                igceventBagXmlDropAllow.RageFighter = Structures.GetAttributeValue(xelement, "RageFighter", igceventBagXmlDropAllow.RageFighter);
+                                igceventBagXmlDropAllow.PlayerMinLevel = Structures.GetAttributeValue(xelement, "PlayerMinLevel", igceventBagXmlDropAllow.PlayerMinLevel);
+                                igceventBagXmlDropAllow.PlayerMaxLevel = Structures.GetAttributeValue(xelement, "PlayerMaxLevel", igceventBagXmlDropAllow.PlayerMaxLevel);
+                                igceventBagXmlDropAllow.MapNumber = Structures.GetAttributeValue(xelement, "MapNumber", igceventBagXmlDropAllow.MapNumber);
+
+                                foreach (XElement xelement2 in xelement.Elements("Drop"))
+                                {
+                                        Structures.IGCEventBagXmlDrop igceventBagXmlDrop = new Structures.IGCEventBagXmlDrop();
+                                        igceventBagXmlDrop.Rate = Structures.GetAttributeValue(xelement2, "Rate", igceventBagXmlDrop.Rate);
+                                        igceventBagXmlDrop.Count = Structures.GetAttributeValue(xelement2, "Count", igceventBagXmlDrop.Count);
+
+                                        foreach (XElement xelement3 in xelement2.Elements("Item"))
+                                        {
+                                                Structures.IGCEventBagXmlItem igceventBagXmlItem = new Structures.IGCEventBagXmlItem();
+                                                igceventBagXmlItem.Cat = Structures.GetAttributeValue(xelement3, "Cat", igceventBagXmlItem.Cat);
+                                                igceventBagXmlItem.Index = Structures.GetAttributeValue(xelement3, "Index", igceventBagXmlItem.Index);
+                                                igceventBagXmlItem.ItemMinLevel = Structures.GetAttributeValue(xelement3, "ItemMinLevel", igceventBagXmlItem.ItemMinLevel);
+                                                igceventBagXmlItem.ItemMaxLevel = Structures.GetAttributeValue(xelement3, "ItemMaxLevel", igceventBagXmlItem.ItemMaxLevel);
+                                                igceventBagXmlItem.Durability = Structures.GetAttributeValue(xelement3, "Durability", igceventBagXmlItem.Durability);
+                                                igceventBagXmlItem.Skill = Structures.GetAttributeValue(xelement3, "Skill", igceventBagXmlItem.Skill);
+                                                igceventBagXmlItem.Luck = Structures.GetAttributeValue(xelement3, "Luck", igceventBagXmlItem.Luck);
+                                                igceventBagXmlItem.Option = Structures.GetAttributeValue(xelement3, "Option", igceventBagXmlItem.Option);
+                                                igceventBagXmlItem.Exc = Structures.GetAttributeValue(xelement3, "Exc", igceventBagXmlItem.Exc);
+                                                igceventBagXmlItem.SetItem = Structures.GetAttributeValue(xelement3, "SetItem", igceventBagXmlItem.SetItem);
+                                                igceventBagXmlItem.SocketCount = Structures.GetAttributeValue(xelement3, "SocketCount", igceventBagXmlItem.SocketCount);
+                                                igceventBagXmlItem.ElementalItem = Structures.GetAttributeValue(xelement3, "ElementalItem", igceventBagXmlItem.ElementalItem);
+                                                igceventBagXmlItem.MuunEvolutionItemCat = Structures.GetAttributeValue(xelement3, "MuunEvolutionItemCat", igceventBagXmlItem.MuunEvolutionItemCat);
+                                                igceventBagXmlItem.MuunEvolutionItemIndex = Structures.GetAttributeValue(xelement3, "MuunEvolutionItemIndex", igceventBagXmlItem.MuunEvolutionItemIndex);
+                                                igceventBagXmlItem.KindA = Structures.GetAttributeValue(xelement3, "KindA", igceventBagXmlItem.KindA);
+                                                igceventBagXmlItem.DropRate = Structures.GetAttributeValue(xelement3, "DropRate", igceventBagXmlItem.DropRate);
+                                                igceventBagXmlItem.Duration = Structures.GetAttributeValue(xelement3, "Duration", igceventBagXmlItem.Duration);
+                                                igceventBagXmlDrop.Items.Add(igceventBagXmlItem);
+                                        }
+
+                                        igceventBagXmlDropAllow.Drops.Add(igceventBagXmlDrop);
+                                }
+
+                                igceventBagXmlFile.DropAllows.Add(igceventBagXmlDropAllow);
+                        }
+
+                        return igceventBagXmlFile;
+                }
+
+                public static void SaveIGCEventBagXml(Structures.IGCEventBagXmlFile file, string fileName)
+                {
+                        if (file == null)
+                        {
+                                throw new ArgumentNullException("file");
+                        }
+
+                        if (string.IsNullOrWhiteSpace(fileName))
+                        {
+                                throw new ArgumentException("Arquivo inválido", "fileName");
+                        }
+
+                        XElement root = new XElement("ItemBag");
+                        XElement xelement = new XElement("BagConfig");
+                        Structures.SetAttributeValue(xelement, "Name", file.BagName, "ItemBag");
+                        Structures.SetAttributeValue(xelement, "ItemRate", file.ItemRate, "0");
+                        Structures.SetAttributeValue(xelement, "SetItemRate", file.SetItemRate, "0");
+                        Structures.SetAttributeValue(xelement, "MoneyDrop", file.MoneyDrop, "0");
+                        Structures.SetAttributeValue(xelement, "BagUseEffect", file.BagUseEffect, "0");
+                        Structures.SetAttributeValue(xelement, "BagUseRate", file.BagUseRate, "10000");
+                        root.Add(xelement);
+
+                        XElement xelement2 = new XElement("SummonBook");
+                        Structures.SetAttributeValue(xelement2, "Enable", file.SummonEnable, "0");
+                        Structures.SetAttributeValue(xelement2, "DropRate", file.SummonDropRate, "0");
+                        Structures.SetAttributeValue(xelement2, "ItemCat", file.SummonItemCat, "0");
+                        Structures.SetAttributeValue(xelement2, "ItemIndex", file.SummonItemIndex, "0");
+                        root.Add(xelement2);
+
+                        string text = string.IsNullOrWhiteSpace(file.AddCoinElementName) ? "AddCoin" : file.AddCoinElementName;
+                        XElement xelement3 = new XElement(text);
+                        Structures.SetAttributeValue(xelement3, "Enable", file.AddCoinEnable, "0");
+                        Structures.SetAttributeValue(xelement3, "CoinType", file.AddCoinType, "0");
+                        Structures.SetAttributeValue(xelement3, "CoinValue", file.AddCoinValue, "0");
+                        root.Add(xelement3);
+
+                        foreach (Structures.IGCEventBagXmlDropAllow igceventBagXmlDropAllow in file.DropAllows)
+                        {
+                                XElement xelement4 = new XElement("DropAllow");
+                                Structures.SetAttributeValue(xelement4, "Wizard", igceventBagXmlDropAllow.Wizard, "0");
+                                Structures.SetAttributeValue(xelement4, "Knight", igceventBagXmlDropAllow.Knight, "0");
+                                Structures.SetAttributeValue(xelement4, "FairyElf", igceventBagXmlDropAllow.FairyElf, "0");
+                                Structures.SetAttributeValue(xelement4, "MagicGladiator", igceventBagXmlDropAllow.MagicGladiator, "0");
+                                Structures.SetAttributeValue(xelement4, "DarkLord", igceventBagXmlDropAllow.DarkLord, "0");
+                                Structures.SetAttributeValue(xelement4, "Summoner", igceventBagXmlDropAllow.Summoner, "0");
+                                Structures.SetAttributeValue(xelement4, "RageFighter", igceventBagXmlDropAllow.RageFighter, "0");
+                                Structures.SetAttributeValue(xelement4, "PlayerMinLevel", igceventBagXmlDropAllow.PlayerMinLevel, "1");
+                                Structures.SetAttributeValue(xelement4, "PlayerMaxLevel", igceventBagXmlDropAllow.PlayerMaxLevel, "MAX");
+                                Structures.SetAttributeValue(xelement4, "MapNumber", igceventBagXmlDropAllow.MapNumber, "-1");
+
+                                foreach (Structures.IGCEventBagXmlDrop igceventBagXmlDrop in igceventBagXmlDropAllow.Drops)
+                                {
+                                        XElement xelement5 = new XElement("Drop");
+                                        Structures.SetAttributeValue(xelement5, "Rate", igceventBagXmlDrop.Rate, "10000");
+                                        Structures.SetAttributeValue(xelement5, "Count", igceventBagXmlDrop.Count, "1");
+
+                                        foreach (Structures.IGCEventBagXmlItem igceventBagXmlItem in igceventBagXmlDrop.Items)
+                                        {
+                                                XElement xelement6 = new XElement("Item");
+                                                Structures.SetAttributeValue(xelement6, "Cat", igceventBagXmlItem.Cat, "0");
+                                                Structures.SetAttributeValue(xelement6, "Index", igceventBagXmlItem.Index, "0");
+                                                Structures.SetAttributeValue(xelement6, "ItemMinLevel", igceventBagXmlItem.ItemMinLevel, "0");
+                                                Structures.SetAttributeValue(xelement6, "ItemMaxLevel", igceventBagXmlItem.ItemMaxLevel, "0");
+                                                Structures.SetAttributeValue(xelement6, "Durability", igceventBagXmlItem.Durability, "-1");
+                                                Structures.SetAttributeValue(xelement6, "Skill", igceventBagXmlItem.Skill, "0");
+                                                Structures.SetAttributeValue(xelement6, "Luck", igceventBagXmlItem.Luck, "0");
+                                                Structures.SetAttributeValue(xelement6, "Option", igceventBagXmlItem.Option, "0");
+                                                Structures.SetAttributeValue(xelement6, "Exc", igceventBagXmlItem.Exc, "0");
+                                                Structures.SetAttributeValue(xelement6, "SetItem", igceventBagXmlItem.SetItem, "0");
+                                                Structures.SetAttributeValue(xelement6, "SocketCount", igceventBagXmlItem.SocketCount, "0");
+                                                Structures.SetAttributeValue(xelement6, "ElementalItem", igceventBagXmlItem.ElementalItem, "0");
+                                                Structures.SetAttributeValue(xelement6, "MuunEvolutionItemCat", igceventBagXmlItem.MuunEvolutionItemCat, "0");
+                                                Structures.SetAttributeValue(xelement6, "MuunEvolutionItemIndex", igceventBagXmlItem.MuunEvolutionItemIndex, "0");
+                                                Structures.SetAttributeValue(xelement6, "KindA", igceventBagXmlItem.KindA, "0");
+                                                Structures.SetAttributeValue(xelement6, "DropRate", igceventBagXmlItem.DropRate, "0");
+                                                Structures.SetAttributeValue(xelement6, "Duration", igceventBagXmlItem.Duration, "0");
+                                                xelement5.Add(xelement6);
+                                        }
+
+                                        xelement4.Add(xelement5);
+                                }
+
+                                root.Add(xelement4);
+                        }
+
+                        XDocument xdocument = new XDocument(new XDeclaration("1.0", "utf-8", "yes"), root);
+                        xdocument.Save(fileName);
+                }
+
                 public class IGCDropManagerXmlItem
                 {
                         public IGCDropManagerXmlItem()

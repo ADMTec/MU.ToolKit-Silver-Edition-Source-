@@ -34,7 +34,6 @@ namespace MU_ToolKit
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-
             this.groupBoxDropSettings = new System.Windows.Forms.GroupBox();
             this.textBoxDropUseRate = new System.Windows.Forms.TextBox();
             this.labelDropUseRate = new System.Windows.Forms.Label();
@@ -116,7 +115,6 @@ namespace MU_ToolKit
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             this.tableLayoutPanelMonsters.SuspendLayout();
-
             this.groupBoxMonsterList.SuspendLayout();
             this.flowLayoutPanelMonsterButtons.SuspendLayout();
             this.groupBoxMonsterDetails.SuspendLayout();
@@ -177,7 +175,6 @@ namespace MU_ToolKit
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
-
             // groupBoxDropSettings
             // 
             this.groupBoxDropSettings.Controls.Add(this.textBoxDropUseRate);
@@ -213,7 +210,6 @@ namespace MU_ToolKit
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMain.Location = new System.Drawing.Point(0, 86);
-
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -601,12 +597,10 @@ namespace MU_ToolKit
             this.listBoxItems.Size = new System.Drawing.Size(381, 257);
             this.listBoxItems.TabIndex = 0;
             this.listBoxItems.SelectedIndexChanged += new System.EventHandler(this.listBoxItems_SelectedIndexChanged);
-
             // 
             // flowLayoutPanelItemButtons
             // 
             this.flowLayoutPanelItemButtons.AutoSize = true;
-
             this.flowLayoutPanelItemButtons.Controls.Add(this.buttonRemoveItem);
             this.flowLayoutPanelItemButtons.Controls.Add(this.buttonAddItem);
             this.flowLayoutPanelItemButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -999,7 +993,6 @@ namespace MU_ToolKit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
             this.ClientSize = new System.Drawing.Size(984, 711);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.groupBoxDropSettings);
