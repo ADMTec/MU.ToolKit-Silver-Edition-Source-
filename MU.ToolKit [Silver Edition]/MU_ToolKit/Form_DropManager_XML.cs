@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using System.Drawing;
+
 using System.IO;
 using System.Windows.Forms;
 
@@ -136,6 +138,7 @@ namespace MU_ToolKit
                 listBoxMonsters.SelectedIndex = -1;
             }
             suppressMonsterSelectionChange = false;
+            UpdateMonsterPreview();
         }
 
         private void RefreshItemDetails()
@@ -194,6 +197,7 @@ namespace MU_ToolKit
                 listBoxItems.SelectedIndex = -1;
             }
             suppressItemSelectionChange = false;
+            UpdateItemPreview();
         }
 
         private void buttonAddMonster_Click(object sender, EventArgs e)
@@ -321,6 +325,7 @@ namespace MU_ToolKit
 
                 monsterBindingSource.ResetCurrentItem();
                 listBoxMonsters.Refresh();
+                UpdateMonsterPreview();
             }
         }
 
@@ -406,7 +411,161 @@ namespace MU_ToolKit
 
                 itemBindingSource.ResetCurrentItem();
                 listBoxItems.Refresh();
+                UpdateItemPreview();
             }
+        }
+
+        private void UpdateMonsterPreview()
+        {
+            if (pictureBoxMonsterPreview == null)
+            {
+                return;
+            }
+
+            Bitmap bitmap = null;
+            if (monsterBindingSource.Current is Structures.IGCDropManagerXmlMonster monster)
+            {
+                bitmap = TryLoadMonsterBitmap(monster.Index);
+            }
+
+            SetPreviewImage(pictureBoxMonsterPreview, bitmap);
+        }
+
+        private void UpdateItemPreview()
+        {
+            if (pictureBoxItemPreview == null)
+            {
+                return;
+            }
+
+            Bitmap bitmap = null;
+            if (itemBindingSource.Current is Structures.IGCDropManagerXmlItem item)
+            {
+                bitmap = TryLoadItemBitmap(item.Cat, item.Index);
+            }
+
+            SetPreviewImage(pictureBoxItemPreview, bitmap);
+        }
+
+        private static Bitmap TryLoadMonsterBitmap(string index)
+        {
+            if (string.IsNullOrWhiteSpace(index))
+            {
+                return null;
+            }
+
+            string trimmed = index.Trim();
+            if (trimmed == "-1")
+            {
+                return null;
+            }
+
+            string numeric = trimmed;
+            string padded = trimmed;
+            if (int.TryParse(trimmed, out int monsterId))
+            {
+                numeric = monsterId.ToString();
+                padded = monsterId.ToString("000");
+            }
+
+            string[] keys = new string[]
+            {
+                "monster_" + numeric,
+                "monster_" + padded,
+                "mob_" + numeric,
+                "mob_" + padded,
+                "_" + numeric,
+                "_" + padded
+            };
+
+            foreach (string key in keys)
+            {
+                Bitmap bitmap = GetResourceBitmap(key);
+                if (bitmap != null)
+                {
+                    return bitmap;
+                }
+            }
+
+            return null;
+        }
+
+        private static Bitmap TryLoadItemBitmap(string cat, string index)
+        {
+            if (string.IsNullOrWhiteSpace(cat) || string.IsNullOrWhiteSpace(index))
+            {
+                return null;
+            }
+
+            string trimmedCat = cat.Trim();
+            string trimmedIndex = index.Trim();
+
+            string catNumeric = trimmedCat;
+            string catPadded = trimmedCat;
+            if (int.TryParse(trimmedCat, out int catValue))
+            {
+                catNumeric = catValue.ToString();
+                catPadded = catValue.ToString("00");
+            }
+
+            string indexNumeric = trimmedIndex;
+            string indexPadded = trimmedIndex;
+            if (int.TryParse(trimmedIndex, out int indexValue))
+            {
+                indexNumeric = indexValue.ToString();
+                indexPadded = indexValue.ToString("00");
+            }
+
+            string[] keys = new string[]
+            {
+                "_" + trimmedCat + trimmedIndex,
+                "_" + trimmedCat + indexPadded,
+                "_" + catPadded + trimmedIndex,
+                "_" + catPadded + indexPadded,
+                "_" + catNumeric + indexNumeric
+            };
+
+            foreach (string key in keys)
+            {
+                Bitmap bitmap = GetResourceBitmap(key);
+                if (bitmap != null)
+                {
+                    return bitmap;
+                }
+            }
+
+            return null;
+        }
+
+        private static Bitmap GetResourceBitmap(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                return null;
+            }
+
+            object obj = global::MU_ToolKit.Properties.Resources.ResourceManager.GetObject(key);
+            return obj as Bitmap;
+        }
+
+        private static void SetPreviewImage(PictureBox target, Bitmap bitmap)
+        {
+            if (target == null)
+            {
+                return;
+            }
+
+            Bitmap display = bitmap ?? global::MU_ToolKit.Properties.Resources.no_img;
+            if (display.Width > target.Width || display.Height > target.Height)
+            {
+                target.BackgroundImageLayout = ImageLayout.Zoom;
+            }
+            else
+            {
+                target.BackgroundImageLayout = ImageLayout.Center;
+            }
+
+            target.BackgroundImage = display;
         }
 
         private void textBoxDropUseRate_TextChanged(object sender, EventArgs e)

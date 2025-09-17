@@ -45,6 +45,8 @@ namespace MU_ToolKit
             this.buttonRemoveMonster = new System.Windows.Forms.Button();
             this.buttonAddMonster = new System.Windows.Forms.Button();
             this.groupBoxMonsterDetails = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelMonsterLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxMonsterPreview = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelMonsterFields = new System.Windows.Forms.TableLayoutPanel();
             this.labelMonsterIndex = new System.Windows.Forms.Label();
             this.textBoxMonsterIndex = new System.Windows.Forms.TextBox();
@@ -75,6 +77,8 @@ namespace MU_ToolKit
             this.buttonRemoveItem = new System.Windows.Forms.Button();
             this.buttonAddItem = new System.Windows.Forms.Button();
             this.groupBoxItemDetails = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelItemLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxItemPreview = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelItemFields = new System.Windows.Forms.TableLayoutPanel();
             this.labelItemCat = new System.Windows.Forms.Label();
             this.textBoxItemCat = new System.Windows.Forms.TextBox();
@@ -118,11 +122,15 @@ namespace MU_ToolKit
             this.groupBoxMonsterList.SuspendLayout();
             this.flowLayoutPanelMonsterButtons.SuspendLayout();
             this.groupBoxMonsterDetails.SuspendLayout();
+            this.tableLayoutPanelMonsterLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMonsterPreview)).BeginInit();
             this.tableLayoutPanelMonsterFields.SuspendLayout();
             this.tableLayoutPanelItems.SuspendLayout();
             this.groupBoxItemList.SuspendLayout();
             this.flowLayoutPanelItemButtons.SuspendLayout();
             this.groupBoxItemDetails.SuspendLayout();
+            this.tableLayoutPanelItemLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPreview)).BeginInit();
             this.tableLayoutPanelItemFields.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -303,7 +311,7 @@ namespace MU_ToolKit
             // 
             // groupBoxMonsterDetails
             // 
-            this.groupBoxMonsterDetails.Controls.Add(this.tableLayoutPanelMonsterFields);
+            this.groupBoxMonsterDetails.Controls.Add(this.tableLayoutPanelMonsterLayout);
             this.groupBoxMonsterDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxMonsterDetails.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxMonsterDetails.Location = new System.Drawing.Point(396, 3);
@@ -312,9 +320,38 @@ namespace MU_ToolKit
             this.groupBoxMonsterDetails.TabIndex = 1;
             this.groupBoxMonsterDetails.TabStop = false;
             this.groupBoxMonsterDetails.Text = "Monster Options";
-            // 
+            //
+            // tableLayoutPanelMonsterLayout
+            //
+            this.tableLayoutPanelMonsterLayout.ColumnCount = 2;
+            this.tableLayoutPanelMonsterLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanelMonsterLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMonsterLayout.Controls.Add(this.pictureBoxMonsterPreview, 0, 0);
+            this.tableLayoutPanelMonsterLayout.Controls.Add(this.tableLayoutPanelMonsterFields, 1, 0);
+            this.tableLayoutPanelMonsterLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelMonsterLayout.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelMonsterLayout.Name = "tableLayoutPanelMonsterLayout";
+            this.tableLayoutPanelMonsterLayout.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.tableLayoutPanelMonsterLayout.RowCount = 1;
+            this.tableLayoutPanelMonsterLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMonsterLayout.Size = new System.Drawing.Size(579, 272);
+            this.tableLayoutPanelMonsterLayout.TabIndex = 0;
+            //
+            // pictureBoxMonsterPreview
+            //
+            this.pictureBoxMonsterPreview.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxMonsterPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxMonsterPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxMonsterPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxMonsterPreview.Location = new System.Drawing.Point(9, 6);
+            this.pictureBoxMonsterPreview.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
+            this.pictureBoxMonsterPreview.Name = "pictureBoxMonsterPreview";
+            this.pictureBoxMonsterPreview.Size = new System.Drawing.Size(146, 260);
+            this.pictureBoxMonsterPreview.TabIndex = 0;
+            this.pictureBoxMonsterPreview.TabStop = false;
+            //
             // tableLayoutPanelMonsterFields
-            // 
+            //
             this.tableLayoutPanelMonsterFields.ColumnCount = 2;
             this.tableLayoutPanelMonsterFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
             this.tableLayoutPanelMonsterFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -341,7 +378,7 @@ namespace MU_ToolKit
             this.tableLayoutPanelMonsterFields.Controls.Add(this.labelMonsterPlayerMaxLevel, 0, 10);
             this.tableLayoutPanelMonsterFields.Controls.Add(this.textBoxMonsterPlayerMaxLevel, 1, 10);
             this.tableLayoutPanelMonsterFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMonsterFields.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelMonsterFields.Location = new System.Drawing.Point(171, 6);
             this.tableLayoutPanelMonsterFields.Name = "tableLayoutPanelMonsterFields";
             this.tableLayoutPanelMonsterFields.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.tableLayoutPanelMonsterFields.RowCount = 11;
@@ -636,7 +673,7 @@ namespace MU_ToolKit
             // 
             // groupBoxItemDetails
             // 
-            this.groupBoxItemDetails.Controls.Add(this.tableLayoutPanelItemFields);
+            this.groupBoxItemDetails.Controls.Add(this.tableLayoutPanelItemLayout);
             this.groupBoxItemDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxItemDetails.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxItemDetails.Location = new System.Drawing.Point(396, 3);
@@ -645,9 +682,38 @@ namespace MU_ToolKit
             this.groupBoxItemDetails.TabIndex = 1;
             this.groupBoxItemDetails.TabStop = false;
             this.groupBoxItemDetails.Text = "Item Options";
-            // 
+            //
+            // tableLayoutPanelItemLayout
+            //
+            this.tableLayoutPanelItemLayout.ColumnCount = 2;
+            this.tableLayoutPanelItemLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanelItemLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelItemLayout.Controls.Add(this.pictureBoxItemPreview, 0, 0);
+            this.tableLayoutPanelItemLayout.Controls.Add(this.tableLayoutPanelItemFields, 1, 0);
+            this.tableLayoutPanelItemLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelItemLayout.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelItemLayout.Name = "tableLayoutPanelItemLayout";
+            this.tableLayoutPanelItemLayout.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.tableLayoutPanelItemLayout.RowCount = 1;
+            this.tableLayoutPanelItemLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelItemLayout.Size = new System.Drawing.Size(579, 293);
+            this.tableLayoutPanelItemLayout.TabIndex = 0;
+            //
+            // pictureBoxItemPreview
+            //
+            this.pictureBoxItemPreview.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxItemPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxItemPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxItemPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxItemPreview.Location = new System.Drawing.Point(9, 6);
+            this.pictureBoxItemPreview.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
+            this.pictureBoxItemPreview.Name = "pictureBoxItemPreview";
+            this.pictureBoxItemPreview.Size = new System.Drawing.Size(146, 281);
+            this.pictureBoxItemPreview.TabIndex = 0;
+            this.pictureBoxItemPreview.TabStop = false;
+            //
             // tableLayoutPanelItemFields
-            // 
+            //
             this.tableLayoutPanelItemFields.ColumnCount = 4;
             this.tableLayoutPanelItemFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
             this.tableLayoutPanelItemFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -686,7 +752,7 @@ namespace MU_ToolKit
             this.tableLayoutPanelItemFields.Controls.Add(this.labelItemDuration, 2, 7);
             this.tableLayoutPanelItemFields.Controls.Add(this.textBoxItemDuration, 3, 7);
             this.tableLayoutPanelItemFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelItemFields.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelItemFields.Location = new System.Drawing.Point(171, 6);
             this.tableLayoutPanelItemFields.Name = "tableLayoutPanelItemFields";
             this.tableLayoutPanelItemFields.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.tableLayoutPanelItemFields.RowCount = 8;
@@ -1018,6 +1084,8 @@ namespace MU_ToolKit
             this.flowLayoutPanelMonsterButtons.ResumeLayout(false);
             this.flowLayoutPanelMonsterButtons.PerformLayout();
             this.groupBoxMonsterDetails.ResumeLayout(false);
+            this.tableLayoutPanelMonsterLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMonsterPreview)).EndInit();
             this.tableLayoutPanelMonsterFields.ResumeLayout(false);
             this.tableLayoutPanelMonsterFields.PerformLayout();
             this.tableLayoutPanelItems.ResumeLayout(false);
@@ -1026,6 +1094,8 @@ namespace MU_ToolKit
             this.flowLayoutPanelItemButtons.ResumeLayout(false);
             this.flowLayoutPanelItemButtons.PerformLayout();
             this.groupBoxItemDetails.ResumeLayout(false);
+            this.tableLayoutPanelItemLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPreview)).EndInit();
             this.tableLayoutPanelItemFields.ResumeLayout(false);
             this.tableLayoutPanelItemFields.PerformLayout();
             this.ResumeLayout(false);
@@ -1051,6 +1121,8 @@ namespace MU_ToolKit
         private System.Windows.Forms.Button buttonRemoveMonster;
         private System.Windows.Forms.Button buttonAddMonster;
         private System.Windows.Forms.GroupBox groupBoxMonsterDetails;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMonsterLayout;
+        private System.Windows.Forms.PictureBox pictureBoxMonsterPreview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMonsterFields;
         private System.Windows.Forms.Label labelMonsterIndex;
         private System.Windows.Forms.TextBox textBoxMonsterIndex;
@@ -1081,6 +1153,8 @@ namespace MU_ToolKit
         private System.Windows.Forms.Button buttonRemoveItem;
         private System.Windows.Forms.Button buttonAddItem;
         private System.Windows.Forms.GroupBox groupBoxItemDetails;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelItemLayout;
+        private System.Windows.Forms.PictureBox pictureBoxItemPreview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelItemFields;
         private System.Windows.Forms.Label labelItemCat;
         private System.Windows.Forms.TextBox textBoxItemCat;
