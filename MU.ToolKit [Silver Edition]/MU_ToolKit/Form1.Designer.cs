@@ -64,6 +64,8 @@
 			this.xMLNewToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.cashShopToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.iGCDropManagerEditorToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
+			this.dropManagerTextToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
+			this.dropManagerXmlToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.itemListSettingsTypeToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.ex700ItemList_ToolStripMenuItem_ON = new global::System.Windows.Forms.ToolStripMenuItem();
@@ -303,14 +305,14 @@
 			this.computeIGCCRCToolStripMenuItem.Size = new global::System.Drawing.Size(236, 22);
 			this.computeIGCCRCToolStripMenuItem.Text = "Compute MU CRC";
 			this.computeIGCCRCToolStripMenuItem.Click += new global::System.EventHandler(this.computeIGCCRCToolStripMenuItem_Click);
-			this.serverToolStripMenuItem.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
-			{
-				this.monsterSetBaseToolStripMenuItem,
-				this.shopToolStripMenuItem,
-				this.eventBagToolStripMenuItem,
-				this.cashShopToolStripMenuItem,
-				this.iGCDropManagerEditorToolStripMenuItem
-			});
+                        this.serverToolStripMenuItem.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
+                        {
+                                this.monsterSetBaseToolStripMenuItem,
+                                this.shopToolStripMenuItem,
+                                this.eventBagToolStripMenuItem,
+                                this.cashShopToolStripMenuItem,
+                                this.iGCDropManagerEditorToolStripMenuItem
+                        });
 			this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
 			this.serverToolStripMenuItem.Size = new global::System.Drawing.Size(93, 21);
 			this.serverToolStripMenuItem.Text = "Server Tools";
@@ -342,10 +344,22 @@
 			this.cashShopToolStripMenuItem.Size = new global::System.Drawing.Size(266, 22);
 			this.cashShopToolStripMenuItem.Text = "CashShop Editor";
 			this.cashShopToolStripMenuItem.Click += new global::System.EventHandler(this.cSToolStripMenuItem_Click);
-			this.iGCDropManagerEditorToolStripMenuItem.Name = "iGCDropManagerEditorToolStripMenuItem";
-			this.iGCDropManagerEditorToolStripMenuItem.Size = new global::System.Drawing.Size(266, 22);
-			this.iGCDropManagerEditorToolStripMenuItem.Text = "MU DropManager Editor";
-			this.iGCDropManagerEditorToolStripMenuItem.Click += new global::System.EventHandler(this.iGCDropManagerEditorToolStripMenuItem_Click);
+                        this.iGCDropManagerEditorToolStripMenuItem.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
+                        {
+                                this.dropManagerTextToolStripMenuItem,
+                                this.dropManagerXmlToolStripMenuItem
+                        });
+                        this.iGCDropManagerEditorToolStripMenuItem.Name = "iGCDropManagerEditorToolStripMenuItem";
+                        this.iGCDropManagerEditorToolStripMenuItem.Size = new global::System.Drawing.Size(266, 22);
+                        this.iGCDropManagerEditorToolStripMenuItem.Text = "MU DropManager Editor";
+                        this.dropManagerTextToolStripMenuItem.Name = "dropManagerTextToolStripMenuItem";
+                        this.dropManagerTextToolStripMenuItem.Size = new global::System.Drawing.Size(139, 22);
+                        this.dropManagerTextToolStripMenuItem.Text = "Text (Old)";
+                        this.dropManagerTextToolStripMenuItem.Click += new global::System.EventHandler(this.iGCDropManagerEditorToolStripMenuItem_Click);
+                        this.dropManagerXmlToolStripMenuItem.Name = "dropManagerXmlToolStripMenuItem";
+                        this.dropManagerXmlToolStripMenuItem.Size = new global::System.Drawing.Size(139, 22);
+                        this.dropManagerXmlToolStripMenuItem.Text = "XML (New)";
+                        this.dropManagerXmlToolStripMenuItem.Click += new global::System.EventHandler(this.iGCDropManagerXmlToolStripMenuItem_Click);
 			this.configToolStripMenuItem.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
 			{
 				this.itemListSettingsTypeToolStripMenuItem
@@ -610,10 +624,16 @@
 		private global::System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 
 		// Token: 0x040002D0 RID: 720
-		private global::System.Windows.Forms.ToolStripMenuItem iGCDropManagerEditorToolStripMenuItem;
+                private global::System.Windows.Forms.ToolStripMenuItem iGCDropManagerEditorToolStripMenuItem;
 
-		// Token: 0x040002D6 RID: 726
-		private global::System.Windows.Forms.ToolStripMenuItem itemAddOptionbmdToolStripMenuItem;
+                // Token: 0x040002D1 RID: 721
+                private global::System.Windows.Forms.ToolStripMenuItem dropManagerTextToolStripMenuItem;
+
+                // Token: 0x040002D2 RID: 722
+                private global::System.Windows.Forms.ToolStripMenuItem dropManagerXmlToolStripMenuItem;
+
+                // Token: 0x040002D6 RID: 726
+                private global::System.Windows.Forms.ToolStripMenuItem itemAddOptionbmdToolStripMenuItem;
 
 		// Token: 0x040002D7 RID: 727
 		private global::System.Windows.Forms.ToolStripMenuItem ItemEx700PlusToolStripMenuItem_Load;
