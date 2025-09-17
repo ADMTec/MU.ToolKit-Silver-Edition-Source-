@@ -64,6 +64,8 @@
 			this.xMLNewToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.cashShopToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.iGCDropManagerEditorToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
+			this.dropManagerTextToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
+			this.dropManagerXmlToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.itemListSettingsTypeToolStripMenuItem = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.ex700ItemList_ToolStripMenuItem_ON = new global::System.Windows.Forms.ToolStripMenuItem();
