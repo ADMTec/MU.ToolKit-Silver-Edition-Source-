@@ -1834,10 +1834,15 @@ namespace MU_ToolKit
 		}
 
 		// Token: 0x060004E0 RID: 1248 RVA: 0x00026C87 File Offset: 0x00024E87
-		private void iGCDropManagerEditorToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			new Form_DropManager().Show();
-		}
+                private void iGCDropManagerEditorToolStripMenuItem_Click(object sender, EventArgs e)
+                {
+                        new Form_DropManager().Show();
+                }
+
+                private void iGCDropManagerXmlToolStripMenuItem_Click(object sender, EventArgs e)
+                {
+                        new Form_DropManager_XML().Show();
+                }
 
 		// Token: 0x060004E2 RID: 1250 RVA: 0x00028CC4 File Offset: 0x00026EC4
 		private void initializeFilterGrid(DataGridView dgv)

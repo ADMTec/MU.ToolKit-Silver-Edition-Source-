@@ -2003,7 +2003,255 @@ namespace MU_ToolKit
 		}
 
 		// Token: 0x0200001C RID: 28
-		public struct IGCDropManagerFile
+                public class IGCDropManagerXmlItem
+                {
+                        public IGCDropManagerXmlItem()
+                        {
+                                this.Cat = "0";
+                                this.Index = "0";
+                                this.ItemMinLevel = "0";
+                                this.ItemMaxLevel = "0";
+                                this.Durability = "-1";
+                                this.Skill = "0";
+                                this.Luck = "0";
+                                this.Option = "0";
+                                this.Exc = "0";
+                                this.SetItem = "0";
+                                this.SocketCount = "0";
+                                this.ElementalItem = "0";
+                                this.MuunEvolutionItemCat = "0";
+                                this.MuunEvolutionItemIndex = "0";
+                                this.DropRate = "1";
+                                this.Duration = "0";
+                        }
+
+                        public string Cat { get; set; }
+
+                        public string Index { get; set; }
+
+                        public string ItemMinLevel { get; set; }
+
+                        public string ItemMaxLevel { get; set; }
+
+                        public string Durability { get; set; }
+
+                        public string Skill { get; set; }
+
+                        public string Luck { get; set; }
+
+                        public string Option { get; set; }
+
+                        public string Exc { get; set; }
+
+                        public string SetItem { get; set; }
+
+                        public string SocketCount { get; set; }
+
+                        public string ElementalItem { get; set; }
+
+                        public string MuunEvolutionItemCat { get; set; }
+
+                        public string MuunEvolutionItemIndex { get; set; }
+
+                        public string DropRate { get; set; }
+
+                        public string Duration { get; set; }
+
+                        public override string ToString()
+                        {
+                                return string.Format("Cat={0} Index={1} DropRate={2}", this.Cat, this.Index, this.DropRate);
+                        }
+                }
+
+                public class IGCDropManagerXmlMonster
+                {
+                        public IGCDropManagerXmlMonster()
+                        {
+                                this.Index = "-1";
+                                this.MonsterMinLevel = "1";
+                                this.MonsterMaxLevel = "150";
+                                this.MapNumber = "-1";
+                                this.ItemRate = "10000";
+                                this.ItemCount = "1";
+                                this.CoinReward = "0";
+                                this.CoinType = "0";
+                                this.CoinValue = "0";
+                                this.PlayerMinLevel = "1";
+                                this.PlayerMaxLevel = "MAX";
+                                this.Items = new BindingList<Structures.IGCDropManagerXmlItem>();
+                        }
+
+                        public string Index { get; set; }
+
+                        public string MonsterMinLevel { get; set; }
+
+                        public string MonsterMaxLevel { get; set; }
+
+                        public string MapNumber { get; set; }
+
+                        public string ItemRate { get; set; }
+
+                        public string ItemCount { get; set; }
+
+                        public string CoinReward { get; set; }
+
+                        public string CoinType { get; set; }
+
+                        public string CoinValue { get; set; }
+
+                        public string PlayerMinLevel { get; set; }
+
+                        public string PlayerMaxLevel { get; set; }
+
+                        public BindingList<Structures.IGCDropManagerXmlItem> Items { get; private set; }
+
+                        public override string ToString()
+                        {
+                                return string.Format("Index={0} Map={1} Rate={2}", this.Index, this.MapNumber, this.ItemRate);
+                        }
+                }
+
+                public class IGCDropManagerXmlFile
+                {
+                        public IGCDropManagerXmlFile()
+                        {
+                                this.DropUseRate = "1000000";
+                                this.Monsters = new BindingList<Structures.IGCDropManagerXmlMonster>();
+                        }
+
+                        public string DropUseRate { get; set; }
+
+                        public BindingList<Structures.IGCDropManagerXmlMonster> Monsters { get; private set; }
+                }
+
+                public static Structures.IGCDropManagerXmlFile LoadIGCDropManagerXml(string fileName)
+                {
+                        if (string.IsNullOrWhiteSpace(fileName))
+                        {
+                                throw new ArgumentException("Arquivo inválido", "fileName");
+                        }
+                        XDocument xdocument = XDocument.Load(fileName);
+                        XElement xelement = xdocument.Element("DropManager");
+                        if (xelement == null)
+                        {
+                                throw new InvalidDataException("O nó DropManager não foi encontrado.");
+                        }
+                        Structures.IGCDropManagerXmlFile igcdropManagerXmlFile = new Structures.IGCDropManagerXmlFile();
+                        igcdropManagerXmlFile.DropUseRate = Structures.GetAttributeValue(xelement, "DropUseRate", igcdropManagerXmlFile.DropUseRate);
+                        foreach (XElement xelement2 in xelement.Elements("Monster"))
+                        {
+                                Structures.IGCDropManagerXmlMonster igcdropManagerXmlMonster = new Structures.IGCDropManagerXmlMonster();
+                                igcdropManagerXmlMonster.Index = Structures.GetAttributeValue(xelement2, "Index", igcdropManagerXmlMonster.Index);
+                                igcdropManagerXmlMonster.MonsterMinLevel = Structures.GetAttributeValue(xelement2, "MonsterMinLevel", igcdropManagerXmlMonster.MonsterMinLevel);
+                                igcdropManagerXmlMonster.MonsterMaxLevel = Structures.GetAttributeValue(xelement2, "MonsterMaxLevel", igcdropManagerXmlMonster.MonsterMaxLevel);
+                                igcdropManagerXmlMonster.MapNumber = Structures.GetAttributeValue(xelement2, "MapNumber", igcdropManagerXmlMonster.MapNumber);
+                                igcdropManagerXmlMonster.ItemRate = Structures.GetAttributeValue(xelement2, "ItemRate", igcdropManagerXmlMonster.ItemRate);
+                                igcdropManagerXmlMonster.ItemCount = Structures.GetAttributeValue(xelement2, "ItemCount", igcdropManagerXmlMonster.ItemCount);
+                                igcdropManagerXmlMonster.CoinReward = Structures.GetAttributeValue(xelement2, "CoinReward", igcdropManagerXmlMonster.CoinReward);
+                                igcdropManagerXmlMonster.CoinType = Structures.GetAttributeValue(xelement2, "CoinType", igcdropManagerXmlMonster.CoinType);
+                                igcdropManagerXmlMonster.CoinValue = Structures.GetAttributeValue(xelement2, "CoinValue", igcdropManagerXmlMonster.CoinValue);
+                                igcdropManagerXmlMonster.PlayerMinLevel = Structures.GetAttributeValue(xelement2, "PlayerMinLevel", igcdropManagerXmlMonster.PlayerMinLevel);
+                                igcdropManagerXmlMonster.PlayerMaxLevel = Structures.GetAttributeValue(xelement2, "PlayerMaxLevel", igcdropManagerXmlMonster.PlayerMaxLevel);
+                                foreach (XElement xelement3 in xelement2.Elements("Item"))
+                                {
+                                        Structures.IGCDropManagerXmlItem igcdropManagerXmlItem = new Structures.IGCDropManagerXmlItem();
+                                        igcdropManagerXmlItem.Cat = Structures.GetAttributeValue(xelement3, "Cat", igcdropManagerXmlItem.Cat);
+                                        igcdropManagerXmlItem.Index = Structures.GetAttributeValue(xelement3, "Index", igcdropManagerXmlItem.Index);
+                                        igcdropManagerXmlItem.ItemMinLevel = Structures.GetAttributeValue(xelement3, "ItemMinLevel", igcdropManagerXmlItem.ItemMinLevel);
+                                        igcdropManagerXmlItem.ItemMaxLevel = Structures.GetAttributeValue(xelement3, "ItemMaxLevel", igcdropManagerXmlItem.ItemMaxLevel);
+                                        igcdropManagerXmlItem.Durability = Structures.GetAttributeValue(xelement3, "Durability", igcdropManagerXmlItem.Durability);
+                                        igcdropManagerXmlItem.Skill = Structures.GetAttributeValue(xelement3, "Skill", igcdropManagerXmlItem.Skill);
+                                        igcdropManagerXmlItem.Luck = Structures.GetAttributeValue(xelement3, "Luck", igcdropManagerXmlItem.Luck);
+                                        igcdropManagerXmlItem.Option = Structures.GetAttributeValue(xelement3, "Option", igcdropManagerXmlItem.Option);
+                                        igcdropManagerXmlItem.Exc = Structures.GetAttributeValue(xelement3, "Exc", igcdropManagerXmlItem.Exc);
+                                        igcdropManagerXmlItem.SetItem = Structures.GetAttributeValue(xelement3, "SetItem", igcdropManagerXmlItem.SetItem);
+                                        igcdropManagerXmlItem.SocketCount = Structures.GetAttributeValue(xelement3, "SocketCount", igcdropManagerXmlItem.SocketCount);
+                                        igcdropManagerXmlItem.ElementalItem = Structures.GetAttributeValue(xelement3, "ElementalItem", igcdropManagerXmlItem.ElementalItem);
+                                        igcdropManagerXmlItem.MuunEvolutionItemCat = Structures.GetAttributeValue(xelement3, "MuunEvolutionItemCat", igcdropManagerXmlItem.MuunEvolutionItemCat);
+                                        igcdropManagerXmlItem.MuunEvolutionItemIndex = Structures.GetAttributeValue(xelement3, "MuunEvolutionItemIndex", igcdropManagerXmlItem.MuunEvolutionItemIndex);
+                                        igcdropManagerXmlItem.DropRate = Structures.GetAttributeValue(xelement3, "DropRate", igcdropManagerXmlItem.DropRate);
+                                        igcdropManagerXmlItem.Duration = Structures.GetAttributeValue(xelement3, "Duration", igcdropManagerXmlItem.Duration);
+                                        igcdropManagerXmlMonster.Items.Add(igcdropManagerXmlItem);
+                                }
+                                igcdropManagerXmlFile.Monsters.Add(igcdropManagerXmlMonster);
+                        }
+                        return igcdropManagerXmlFile;
+                }
+
+                public static void SaveIGCDropManagerXml(Structures.IGCDropManagerXmlFile file, string fileName)
+                {
+                        if (file == null)
+                        {
+                                throw new ArgumentNullException("file");
+                        }
+                        if (string.IsNullOrWhiteSpace(fileName))
+                        {
+                                throw new ArgumentException("Arquivo inválido", "fileName");
+                        }
+                        XElement xelement = new XElement("DropManager");
+                        xelement.SetAttributeValue("DropUseRate", Structures.NormalizeAttribute(file.DropUseRate, "1000000"));
+                        foreach (Structures.IGCDropManagerXmlMonster igcdropManagerXmlMonster in file.Monsters)
+                        {
+                                XElement xelement2 = new XElement("Monster");
+                                Structures.SetAttributeValue(xelement2, "Index", igcdropManagerXmlMonster.Index, "-1");
+                                Structures.SetAttributeValue(xelement2, "MonsterMinLevel", igcdropManagerXmlMonster.MonsterMinLevel, "-1");
+                                Structures.SetAttributeValue(xelement2, "MonsterMaxLevel", igcdropManagerXmlMonster.MonsterMaxLevel, "-1");
+                                Structures.SetAttributeValue(xelement2, "MapNumber", igcdropManagerXmlMonster.MapNumber, "-1");
+                                Structures.SetAttributeValue(xelement2, "ItemRate", igcdropManagerXmlMonster.ItemRate, "0");
+                                Structures.SetAttributeValue(xelement2, "ItemCount", igcdropManagerXmlMonster.ItemCount, "0");
+                                Structures.SetAttributeValue(xelement2, "CoinReward", igcdropManagerXmlMonster.CoinReward, "0");
+                                Structures.SetAttributeValue(xelement2, "CoinType", igcdropManagerXmlMonster.CoinType, "0");
+                                Structures.SetAttributeValue(xelement2, "CoinValue", igcdropManagerXmlMonster.CoinValue, "0");
+                                Structures.SetAttributeValue(xelement2, "PlayerMinLevel", igcdropManagerXmlMonster.PlayerMinLevel, "0");
+                                Structures.SetAttributeValue(xelement2, "PlayerMaxLevel", igcdropManagerXmlMonster.PlayerMaxLevel, "MAX");
+                                foreach (Structures.IGCDropManagerXmlItem igcdropManagerXmlItem in igcdropManagerXmlMonster.Items)
+                                {
+                                        XElement xelement3 = new XElement("Item");
+                                        Structures.SetAttributeValue(xelement3, "Cat", igcdropManagerXmlItem.Cat, "0");
+                                        Structures.SetAttributeValue(xelement3, "Index", igcdropManagerXmlItem.Index, "0");
+                                        Structures.SetAttributeValue(xelement3, "ItemMinLevel", igcdropManagerXmlItem.ItemMinLevel, "0");
+                                        Structures.SetAttributeValue(xelement3, "ItemMaxLevel", igcdropManagerXmlItem.ItemMaxLevel, "0");
+                                        Structures.SetAttributeValue(xelement3, "Durability", igcdropManagerXmlItem.Durability, "-1");
+                                        Structures.SetAttributeValue(xelement3, "Skill", igcdropManagerXmlItem.Skill, "0");
+                                        Structures.SetAttributeValue(xelement3, "Luck", igcdropManagerXmlItem.Luck, "0");
+                                        Structures.SetAttributeValue(xelement3, "Option", igcdropManagerXmlItem.Option, "0");
+                                        Structures.SetAttributeValue(xelement3, "Exc", igcdropManagerXmlItem.Exc, "0");
+                                        Structures.SetAttributeValue(xelement3, "SetItem", igcdropManagerXmlItem.SetItem, "0");
+                                        Structures.SetAttributeValue(xelement3, "SocketCount", igcdropManagerXmlItem.SocketCount, "0");
+                                        Structures.SetAttributeValue(xelement3, "ElementalItem", igcdropManagerXmlItem.ElementalItem, "0");
+                                        Structures.SetAttributeValue(xelement3, "MuunEvolutionItemCat", igcdropManagerXmlItem.MuunEvolutionItemCat, "0");
+                                        Structures.SetAttributeValue(xelement3, "MuunEvolutionItemIndex", igcdropManagerXmlItem.MuunEvolutionItemIndex, "0");
+                                        Structures.SetAttributeValue(xelement3, "DropRate", igcdropManagerXmlItem.DropRate, "0");
+                                        Structures.SetAttributeValue(xelement3, "Duration", igcdropManagerXmlItem.Duration, "0");
+                                        xelement2.Add(xelement3);
+                                }
+                                xelement.Add(xelement2);
+                        }
+                        XDocument xdocument = new XDocument(new XDeclaration("1.0", "utf-8", "yes"), xelement);
+                        xdocument.Save(fileName);
+                }
+
+                private static string GetAttributeValue(XElement element, string attributeName, string defaultValue)
+                {
+                        XAttribute xattribute = element.Attribute(attributeName);
+                        if (xattribute == null || string.IsNullOrWhiteSpace(xattribute.Value))
+                        {
+                                return defaultValue;
+                        }
+                        return xattribute.Value.Trim();
+                }
+
+                private static string NormalizeAttribute(string value, string defaultValue)
+                {
+                        return string.IsNullOrWhiteSpace(value) ? defaultValue : value.Trim();
+                }
+
+                private static void SetAttributeValue(XElement element, string attributeName, string value, string defaultValue)
+                {
+                        element.SetAttributeValue(attributeName, Structures.NormalizeAttribute(value, defaultValue));
+                }
+
+                public struct IGCDropManagerFile
 		{
 			// Token: 0x17000369 RID: 873
 			// (get) Token: 0x060003E1 RID: 993 RVA: 0x0001A73A File Offset: 0x0001893A
