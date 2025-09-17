@@ -100,6 +100,12 @@
     <Compile Include="MU_ToolKit\Form_DropManager.Designer.cs">
       <DependentUpon>Form_DropManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="MU_ToolKit\Form_DropManager_XML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MU_ToolKit\Form_DropManager_XML.Designer.cs">
+      <DependentUpon>Form_DropManager_XML.cs</DependentUpon>
+    </Compile>
     <Compile Include="MU_ToolKit\Form_Search.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MU_ToolKit\Form_DropManager.resx">
       <DependentUpon>Form_DropManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MU_ToolKit\Form_DropManager_XML.resx">
+      <DependentUpon>Form_DropManager_XML.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MU_ToolKit\Form_Search.resx">
       <DependentUpon>Form_Search.cs</DependentUpon>
